@@ -7,22 +7,22 @@
 
 <div class="row">
     <div class="col">
-        <form action="" method="POST" id="formLaptop">
+        <form action="" method="POST" id="formLaptop" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="kode">Kode</label>
                 <input type="text" class="form-control" id="kode" name="kode" readonly />
             </div>
             <div class="form-group">
-                <label for="nama_laptop">Nama Laptop</label>
-                <input type="text" class="form-control" id="nama_laptop" name="nama_laptop" />
+                <label for="nama">Nama</label>
+                <input type="text" class="form-control" id="nama" name="nama" />
             </div>
             <div class="form-group">
-                <label for="kategori">Kategori</label>
-                <select class="form-control" id="kategori" name="kategori"></select>
+                <label for="kode_kategori">Kategori</label>
+                <select class="form-control" id="kode_kategori" name="kode_kategori"></select>
             </div>
             <div class="form-group">
-                <label for="merek">Merek</label>
-                <select class="form-control" id="merek" name="merek"></select>
+                <label for="kode_merek">Merek</label>
+                <select class="form-control" id="kode_merek" name="kode_merek"></select>
             </div>
             <div class="form-group">
                 <label for="gambar">Gambar</label>
