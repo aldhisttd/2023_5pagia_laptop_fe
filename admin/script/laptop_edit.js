@@ -16,6 +16,12 @@ $(document).ready(function () {
     };
 
     var kode = getUrlParameter("kode");
+
+    if (!kode) {
+        alert("Kode tidak ditemukan di URL");
+        return;
+    }
+
     // menampilkan data by=kode
     $.ajax({
         type: "GET",
@@ -25,17 +31,17 @@ $(document).ready(function () {
         success: function (response) {
             if(response.status === 200) {
                 var data = response.body.data[0];
-                console.log(data);
                 $("#kode").val(data.kode);
                 $("#nama").val(data.nama);
+                // select option untuk kode_kategori
                 var kode_kategori = $("#kode_kategori");
                 kode_kategori.empty();
                 kode_kategori.append("<option selected value='" + data.kode_kategori + "'>" + data.kode_kategori + "</option>");
-            
-                // select option untuk kode_merk
-                var kode_merk = $("#kode_merk");
-                kode_merk.empty();
-                kode_merk.append("<option selected value='" + data.kode_merk + "'>" + data.kode_merk + "</option>");
+
+                // select option untuk kode_merek
+                var kode_merek = $("#kode_merek");
+                kode_merek.empty();
+                kode_merek.append("<option selected value='" + data.kode_merek + "'>" + data.kode_merek + "</option>");
                 $("#harga").val(data.harga);
                 $("#deskripsi").val(data.deskripsi);
             } else {
@@ -50,16 +56,17 @@ $(document).ready(function () {
     // Mengambil data kategori dari API
     $.ajax({
         type: "GET",
-        url: host + "kategori_read_one.php", 
+        url: host + "kategori_read_one.php", // Mengubah endpoint API ke yang mengambil semua data kategori
         success: function(response) {
             if(response.status === 200 && response.body && response.body.data) {
                 var data = response.body.data[0];
+                var select = $("#kode_kategori");
+                select.empty(); // Mengosongkan pilihan sebelumnya
+                $.each(data, function(i, item) {
+                    select.append('<option value="' + item.kode + '">' + item.nama + '</option>');
+                });
             } else {
                 alert("Error: " + response.msg);
-            }
-            var select = $("#kode_kategori");
-            if(data) {
-                select.append('<option value="' + data.kode + '">' + data.nama + '</option>');
             }
         }
     });
@@ -67,19 +74,21 @@ $(document).ready(function () {
     // Mengambil data merek dari API
     $.ajax({
         type: "GET",
-        url: host + "merek_read_one.php", 
+        url: host + "merek_read_one.php", // Mengubah endpoint API ke yang mengambil semua data merek
         success: function(response) {
             if(response.status === 200 && response.body && response.body.data) {
                 var data = response.body.data[0];
+                var select = $("#kode_merek");
+                select.empty(); // Mengosongkan pilihan sebelumnya
+                $.each(data, function(i, item) {
+                    select.append('<option value="' + item.kode + '">' + item.nama + '</option>');
+                });
             } else {
                 alert("Error: " + response.msg);
             }
-            var select = $("#kode_merk");
-            if(data) {
-                select.append('<option value="' + data.kode + '">' + data.nama + '</option>');
-            }
         }
     });
+
 
     // update data
     $("#formLaptop").submit(function (e) {
