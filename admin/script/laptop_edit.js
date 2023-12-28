@@ -4,10 +4,8 @@ $(document).ready(function () {
             sURLVariables = sPageURL.split("&"),
             sParameterName,
             i;
-
         for (i = 0; i < sURLVariables.length; i++) {
             sParameterName = sURLVariables[i].split("=");
-
             if (sParameterName[0] === sParam) {
                 return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
             }
@@ -15,80 +13,62 @@ $(document).ready(function () {
         return false;
     };
 
-    var kode = getUrlParameter("kode");
-
-    if (!kode) {
-        alert("Kode tidak ditemukan di URL");
-        return;
-    }
-
-    // menampilkan data by=kode
+    // menampilkan select kategori
     $.ajax({
         type: "GET",
-        url: host + "laptop_read_one.php",
-        data: { kode: kode },
+        url: host + "kategori_read.php",
+        async: true,
+        cache: false,
+        contentType: false,
+        processData: false,
         dataType: "json",
         success: function (response) {
-            if(response.status === 200) {
-                var data = response.body.data[0];
-                $("#kode").val(data.kode);
-                $("#nama").val(data.nama);
-                // select option untuk kode_kategori
-                var kode_kategori = $("#kode_kategori");
-                kode_kategori.empty();
-                kode_kategori.append("<option selected value='" + data.kode_kategori + "'>" + data.kode_kategori + "</option>");
+            var kategori = response.body.data;
 
-                // select option untuk kode_merek
-                var kode_merek = $("#kode_merek");
-                kode_merek.empty();
-                kode_merek.append("<option selected value='" + data.kode_merek + "'>" + data.kode_merek + "</option>");
-                $("#harga").val(data.harga);
-                $("#deskripsi").val(data.deskripsi);
-            } else {
-                alert("Error: " + response.msg);
+            for (var i = 0; i < kategori.length; i++) {
+                $("#kode_kategori").append(`<option value="` + kategori[i].kode + `">` + kategori[i].nama + `</option>`);
             }
         },
-        error: function() {
-            alert("msg : Error");
-        }
     });
 
-    // Mengambil data kategori dari API
+    // menampilkan select merek
     $.ajax({
         type: "GET",
-        url: host + "kategori_read_one.php", // Mengubah endpoint API ke yang mengambil semua data kategori
-        success: function(response) {
-            if(response.status === 200 && response.body && response.body.data) {
-                var data = response.body.data[0];
-                var select = $("#kode_kategori");
-                select.empty(); // Mengosongkan pilihan sebelumnya
-                $.each(data, function(i, item) {
-                    select.append('<option value="' + item.kode + '">' + item.nama + '</option>');
-                });
-            } else {
-                alert("Error: " + response.msg);
+        url: host + "merek_read.php",
+        async: true,
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (response) {
+            var merek = response.body.data;
+
+            for (var i = 0; i < merek.length; i++) {
+                $("#kode_merek").append(`<option value="` + merek[i].kode + `">` + merek[i].nama + `</option>`);
             }
-        }
+        },
     });
 
-    // Mengambil data merek dari API
+    // menampilkan data by kode
+    var kode = getUrlParameter("kode");
     $.ajax({
         type: "GET",
-        url: host + "merek_read_one.php", // Mengubah endpoint API ke yang mengambil semua data merek
-        success: function(response) {
-            if(response.status === 200 && response.body && response.body.data) {
-                var data = response.body.data[0];
-                var select = $("#kode_merek");
-                select.empty(); // Mengosongkan pilihan sebelumnya
-                $.each(data, function(i, item) {
-                    select.append('<option value="' + item.kode + '">' + item.nama + '</option>');
-                });
-            } else {
-                alert("Error: " + response.msg);
-            }
-        }
+        url: host + "laptop_read_one.php?kode=" + kode,
+        async: true,
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (response) {
+            var data = response.body.data;
+            $("#kode").val(data.kode);
+            $("#nama").val(data.nama);
+            $("#kode_kategori").val(data.kode_kategori);
+            $("#kode_merek").val(data.kode_merek);
+            $("#harga").val(data.harga);
+            $("#deskripsi").val(data.deskripsi);
+        },
     });
-
 
     // update data
     $("#formLaptop").submit(function (e) {
@@ -103,15 +83,9 @@ $(document).ready(function () {
             processData: false,
             dataType: "json",
             success: function (response) {
-                if(response.status === 200) {
-                    alert("Data berhasil diperbarui");
-                } else {
-                    alert("Error: " + response.msg);
-                }
+                alert(response.msg);
+                location.href = host_fe + "admin/?page=laptop_data";
             },
-            error: function() {
-                alert("msg : Data gagal diperbarui");
-            }
         });
     });
 });

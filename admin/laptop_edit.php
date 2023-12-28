@@ -6,8 +6,8 @@
 </div>
 
 <div class="row">
-    <div class="col">
-        <form action="" method="POST" id="formLaptop" enctype="multipart/form-data">
+    <div class="col-md-4">
+        <form action="" method="POST" id="formLaptop">
             <div class="form-group">
                 <label for="kode">Kode</label>
                 <input type="text" class="form-control" id="kode" name="kode" readonly />
@@ -18,11 +18,17 @@
             </div>
             <div class="form-group">
                 <label for="kode_kategori">Kategori</label>
-                <select class="form-control" id="kode_kategori" name="kode_kategori"></select>
+                <select class="form-control" id="kode_kategori" name="kode_kategori">
+                    <option disabled>Pilih</option>
+                    <!-- data dipanggil api -->
+                </select>
             </div>
             <div class="form-group">
                 <label for="kode_merek">Merek</label>
-                <select class="form-control" id="kode_merek" name="kode_merek"></select>
+                <select class="form-control" id="kode_merek" name="kode_merek">
+                    <option disabled>Pilih</option>
+                    <!-- data dipanggil api -->
+                </select>
             </div>
             <div class="form-group">
                 <label for="gambar">Gambar</label>
