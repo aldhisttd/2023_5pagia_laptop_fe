@@ -8,10 +8,10 @@
     <!-- form -->
     <div class="row mt-2">
         <div class="col">
-            <form id="merekUpdate" action="" method="POST" enctype="multipart/form-data">
+            <form id="merekUpdate">
                 <div class="form-group">
                     <label for="kode">Kode</label>
-                    <input type="text" class="form-control" name="kode" id="kode" />
+                    <input type="text" class="form-control" name="kode" id="kode" readonly/>
                 </div>
                 <div class="form-group">
                     <label for="nama">Nama</label>
