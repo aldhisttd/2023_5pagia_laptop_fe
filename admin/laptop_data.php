@@ -13,5 +13,6 @@
     </tr>
   </thead>
   <tbody id="datalaptop">
+    
   </tbody>
 </table>

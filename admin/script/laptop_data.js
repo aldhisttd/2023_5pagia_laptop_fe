@@ -23,18 +23,18 @@ $(document).ready(function () {
                         datalaptop[i].kode +
                         `</td>
                             <td>
-                            <img src="../assets/img/` +
+                            <img src="` +
+                        host +
                         datalaptop[i].gambar +
                         `" width="100" />
-                            </td>
-                            <td>` +
+                                <td>` +
                         datalaptop[i].nama +
                         `</td>
-                            <td>` +
-                        datalaptop[i].kode_kategori +
+                                <td>` +
+                        datalaptop[i].kategori +
                         `</td>
                             <td>` +
-                        datalaptop[i].kode_merek +
+                        datalaptop[i].merek +
                         `</td>
                             <td>` +
                         datalaptop[i].deskripsi +
@@ -47,13 +47,13 @@ $(document).ready(function () {
                         datalaptop[i].kode +
                         `">Hapus</button>
                             <button class="btn btn-primary edit-btn">
-                                <a class="text-light" href="../obat_edit/menu_edit.php?kode=` +
+                                <a class="text-light" href="index.php?page=laptop_edit&kode=` +
                         datalaptop[i].kode +
                         `">Edit</a>
-                                </button>
-                            </td>
-                        </tr>
-                        `
+                                        </button>
+                                    </td>
+                                </tr>
+                                `
                     );
                 }
             },
@@ -71,11 +71,12 @@ $(document).ready(function () {
             if (confirm("Yakin ingin hapus data dengan kode=" + kode + "?")) {
                 $.ajax({
                     type: "POST",
-                    url: host + "laptop_delete.php",
+                    url:  host + "laptop_delete.php",
                     data: { kode: kode },
                     dataType: "json",
                     success: function (response) {
                         alert(response.msg);
+                        loadLaptopData();
                     },
                     error: function (xhr, status, error) {
                         console.error("AJAX Error: " + status, error);
