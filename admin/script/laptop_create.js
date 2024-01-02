@@ -1,69 +1,72 @@
-var host = 'http://localhost/coba/2023_5pagia_laptop_be/dummy.php';
-$.ajax({
-  type: 'GET',
-  url: host + 'kategori_read_one.php',
-  cache: false,
-  contentType: false,
-  processData: false,
-  dataType: 'json',
-  success: (result) => {
-    // Clear existing options in the dropdown
-    $('#kode_kategori').empty();
+function populasiKategori() {
+    $.ajax({
+        type: "GET",
+        url: host + "kategori_read.php", // Gantilah dengan URL API kategori
+        dataType: "json",
+        async: true,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function (data) {
+            var categories = data.body.data;
+            var select = $("#kode_kategori");
 
-    // Add an empty/default option
-    $('#kode_kategori').append('<option value="">Pilih Kategori</option>');
+            // Kosongkan opsi pemilihan sebelum mengisi kembali
+            select.empty();
 
-    // Loop through the data and append options to the dropdown
-    result.data.forEach((item) => {
-      $('#kode_kategori').append(`
-                <option value="${item.kode}">${item.nama}</option>
-            `);
+            // Tambahkan opsi pemilihan untuk setiap kategori
+            for (var i = 0; i < categories.length; i++) {
+                select.append(`<option value="${categories[i].kode}">${categories[i].kode}</option>`);
+            }
+        },
     });
-  },
+}
+// Panggil fungsi untuk mengisi opsi pemilihan kategori saat halaman dimuat
+$(document).ready(function () {
+    populasiKategori();
 });
 
-$.ajax({
-  type: 'GET',
-  url: host + 'merek_read_one.php',
-  cache: false,
-  contentType: false,
-  processData: false,
-  dataType: 'json',
-  success: (result) => {
-    // Clear existing options in the dropdown
-    $('#kode_merek').empty();
-
-    // Add an empty/default option
-    $('#kode_merek').append('<option value="">Pilih Merek</option>');
-
-    // Loop through the data and append options to the dropdown
-    result.data.forEach((item) => {
-      $('#kode_merek').append(`
-                  <option value="${item.kode}">${item.nama}</option>
-              `);
-    });
-  },
-});
-
-$('#insert-laptop').submit(function (e) {
-  e.preventDefault();
-  var formData = new FormData(this);
-  console.log(formData);
+function populasiMerek() {
   $.ajax({
-    type: 'POST',
-    url: host,
-    data: formData,
-    cache: false,
-    contentType: false,
-    processData: false,
-    dataType: 'json',
-    success: function (response) {
-      console.log(response);
-      alert('Data berhasil ditambahkan');
-  },
-  error: function (error) {
-      console.error('Error:', error.responseText);
-      alert('Terjadi kesalahan. Silakan cek konsol untuk informasi lebih lanjut.');
-  },
+      type: "GET",
+      url: host + "merek_read.php", // Gantilah dengan URL API kategori
+      dataType: "json",
+      async: true,
+      cache: false,
+      contentType: false,
+      processData: false,
+      success: function (data) {
+          var categories = data.body.data;
+          var select = $("#kode_merek");
+
+          // Kosongkan opsi pemilihan sebelum mengisi kembali
+          select.empty();
+
+          // Tambahkan opsi pemilihan untuk setiap kategori
+          for (var i = 0; i < categories.length; i++) {
+              select.append(`<option value="${categories[i].kode}">${categories[i].kode}</option>`);
+          }
+      },
+  });
+}
+// Panggil fungsi untuk mengisi opsi pemilihan kategori saat halaman dimuat 
+$(document).ready(function () {
+  populasiMerek();
 });
-});
+$('#laptopCreate').submit(function(e){
+    e.preventDefault();
+    var formData = new FormData(this);
+    $.ajax({
+        type: 'POST',
+        url: host + "laptop_input.php",
+        data: formData,
+        cache: false,
+        contentType: false, 
+        processData: false, 
+        dataType: 'json',
+        success: (result) => {
+            alert(result.msg);
+            location.href = host_fe + "?page=laptop_data";
+        },
+    });
+  })
