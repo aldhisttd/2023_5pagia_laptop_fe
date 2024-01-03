@@ -8,7 +8,7 @@
     <!-- form -->
     <div class="row mt-2">
         <div class="col">
-            <form id="laptopCreate" enctype="multipart/form-data">
+            <form id="laptopCreate">
                 <div class="form-group">
                     <label for="kode">Kode</label>
                     <input type="text" class="form-control" name="kode" id="kode" />

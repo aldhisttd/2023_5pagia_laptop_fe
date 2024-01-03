@@ -1,3 +1,5 @@
+$(document).ready(function () {
+    populasiKategori();
 function populasiKategori() {
     $.ajax({
         type: "GET",
@@ -21,11 +23,7 @@ function populasiKategori() {
         },
     });
 }
-// Panggil fungsi untuk mengisi opsi pemilihan kategori saat halaman dimuat
-$(document).ready(function () {
-    populasiKategori();
-});
-
+populasiMerek();
 function populasiMerek() {
   $.ajax({
       type: "GET",
@@ -49,10 +47,6 @@ function populasiMerek() {
       },
   });
 }
-// Panggil fungsi untuk mengisi opsi pemilihan kategori saat halaman dimuat 
-$(document).ready(function () {
-  populasiMerek();
-});
 $('#laptopCreate').submit(function(e){
     e.preventDefault();
     var formData = new FormData(this);
@@ -70,3 +64,4 @@ $('#laptopCreate').submit(function(e){
         },
     });
   })
+});
