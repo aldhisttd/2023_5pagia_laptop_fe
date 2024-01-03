@@ -18,7 +18,7 @@ function populasiKategori() {
 
             // Tambahkan opsi pemilihan untuk setiap kategori
             for (var i = 0; i < categories.length; i++) {
-                select.append(`<option value="${categories[i].kode}">${categories[i].kode}</option>`);
+                select.append(`<option value="${categories[i].kode}">${categories[i].nama}</option>`);
             }
         },
     });
@@ -42,7 +42,7 @@ function populasiMerek() {
 
           // Tambahkan opsi pemilihan untuk setiap kategori
           for (var i = 0; i < categories.length; i++) {
-              select.append(`<option value="${categories[i].kode}">${categories[i].kode}</option>`);
+              select.append(`<option value="${categories[i].kode}">${categories[i].nama}</option>`);
           }
       },
   });
