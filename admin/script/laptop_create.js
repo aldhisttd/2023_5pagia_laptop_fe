@@ -3,7 +3,7 @@ $(document).ready(function () {
 function populasiKategori() {
     $.ajax({
         type: "GET",
-        url: host + "kategori_read.php", // Gantilah dengan URL API kategori
+        url: host + "kategori_read.php",
         dataType: "json",
         async: true,
         cache: false,
@@ -13,10 +13,8 @@ function populasiKategori() {
             var categories = data.body.data;
             var select = $("#kode_kategori");
 
-            // Kosongkan opsi pemilihan sebelum mengisi kembali
             select.empty();
 
-            // Tambahkan opsi pemilihan untuk setiap kategori
             for (var i = 0; i < categories.length; i++) {
                 select.append(`<option value="${categories[i].kode}">${categories[i].nama}</option>`);
             }
@@ -27,7 +25,7 @@ populasiMerek();
 function populasiMerek() {
   $.ajax({
       type: "GET",
-      url: host + "merek_read.php", // Gantilah dengan URL API kategori
+      url: host + "merek_read.php",
       dataType: "json",
       async: true,
       cache: false,
@@ -37,10 +35,8 @@ function populasiMerek() {
           var categories = data.body.data;
           var select = $("#kode_merek");
 
-          // Kosongkan opsi pemilihan sebelum mengisi kembali
           select.empty();
 
-          // Tambahkan opsi pemilihan untuk setiap kategori
           for (var i = 0; i < categories.length; i++) {
               select.append(`<option value="${categories[i].kode}">${categories[i].nama}</option>`);
           }
