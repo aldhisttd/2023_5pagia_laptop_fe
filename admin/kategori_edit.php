@@ -7,7 +7,7 @@
 
 <div class="row">
     <div class="col-md-4">
-        <form action="" method="POST" id="formKategori">
+        <form id="formKategori">
             <div class="form-group">
                 <label for="kode">Kode</label>
                 <input type="text" class="form-control" id="kode" name="kode" readonly />
@@ -17,7 +17,7 @@
                 <input type="text" class="form-control" id="nama" name="nama" />
             </div>
             <div class="form-group">
-                <button class="btn btn-danger" type="reset">Reset</button>
+                <a href="?page=kategori_data" class="btn btn-danger">Batal</a>
                 <button class="btn btn-primary" type="submit">Submit</button>
             </div>
         </form>
