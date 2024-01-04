@@ -17,7 +17,7 @@
                 <input type="text" class="form-control" id="nama" name="nama" />
             </div>
             <div class="form-group">
-                <a href="?page=kategori_data" class="btn btn-danger">Batal</a>
+                <a href="http://localhost/2023_5pagia_laptop_fe/admin/?page=kategori_data" class="btn btn-danger">Batal</a> 
                 <button class="btn btn-primary" type="submit">Submit</button>
             </div>
         </form>
