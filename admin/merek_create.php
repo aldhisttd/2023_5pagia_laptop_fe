@@ -9,7 +9,7 @@
     <!-- form -->
     <div class="row mt-2">
         <div class="col">
-            <form id="MerekCreate" action="" method="POST" enctype="multipart/form-data">
+            <form id="MerekCreate">
                 <div class="form-group">
                     <label for="kode">Kode</label>
                     <input type="text" class="form-control" name="kode" id="kode" />
