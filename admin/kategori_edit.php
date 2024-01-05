@@ -17,13 +17,9 @@
                 <input type="text" class="form-control" id="nama" name="nama" />
             </div>
             <div class="form-group">
-                <a id="batalBtn" class="btn btn-danger">Batal</a> 
+                <button type="button" class="btn btn-danger" onclick="window.location.href=host_fe + 'admin/?page=kategori_data'">Batal</button> 
                 <button class="btn btn-primary" type="submit">Submit</button>
             </div>
         </form>
     </div>
 </div>
-
-<script>
-    document.getElementById('batalBtn').href = host_fe + "admin/?page=kategori_data";
-</script>
