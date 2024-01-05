@@ -18,8 +18,8 @@ $(document).ready(function () {
                         '<td>' + (i + 1) + '</td>' +
                         '<td>' + laptopList[i].kode + '</td>' +
                         '<td>' + laptopList[i].nama + '</td>' +
-                        '<td>' + laptopList[i].kategori + '</td>' +
-                        '<td>' + laptopList[i].merek + '</td>' +
+                        '<td>' + laptopList[i].nama_kategori + '</td>' +
+                        '<td>' + laptopList[i].nama_merek + '</td>' +
                         '<td><img src="' + laptopList[i].gambar + '" width="100" /></td>' +
                         '<td>' + laptopList[i].harga + '</td>' +
                         '<td>' + laptopList[i].deskripsi + '</td>' +
@@ -41,7 +41,6 @@ $(document).ready(function () {
     loadLaptopData();
 
     // Fungsi untuk menangani klik tombol hapus
-    function handleDeleteButtonClick() {
         $(document).on("click", ".delete-btn", function () {
             var kode = $(this).data("kode");
 
@@ -63,8 +62,4 @@ $(document).ready(function () {
                 });
             }
         });
-    }
-
-    // Menambahkan penanganan klik tombol hapus
-    handleDeleteButtonClick();
 });
