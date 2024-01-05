@@ -17,7 +17,7 @@
                 <input type="text" class="form-control" id="nama" name="nama" />
             </div>
             <div class="form-group">
-                <button type="button" class="btn btn-danger" onclick="window.location.href=host_fe + 'admin/?page=kategori_data'">Batal</button> 
+                <button onclick="window.location.href=host_fe+'admin/?page=kategori_data'" class="btn btn-danger">Batal & Kembali</button>
                 <button class="btn btn-primary" type="submit">Submit</button>
             </div>
         </form>
