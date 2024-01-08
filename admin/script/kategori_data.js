@@ -1,7 +1,6 @@
 $(document).ready(function () {
     readKategori();
-  
-    // API read
+
     function readKategori() {
       $("#kategoriData").empty();
       $.ajax({
@@ -36,8 +35,7 @@ $(document).ready(function () {
         },
       });
     }
-  
-    // API hapus
+    
     $(document).on("click", ".hapus", function () {
       var kode = $(this).val();
   
