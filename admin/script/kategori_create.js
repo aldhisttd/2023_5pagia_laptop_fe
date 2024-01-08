@@ -1,6 +1,7 @@
 $("#kategoriCreate").submit(function (e) {
     e.preventDefault();
     var formData = new FormData(this);
+    
     $.ajax({
       type: "POST",
       url: host + "kategori_create.php",
@@ -15,4 +16,3 @@ $("#kategoriCreate").submit(function (e) {
       },
     });
   });
-  
