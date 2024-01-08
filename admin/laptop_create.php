@@ -1,14 +1,10 @@
-<main role="main" class="col-lg-7 px-md-2">
-    <!-- title -->
-    <div class="row mt-3">
-        <div class="col">
-            <h3>Laptop Baru</h3>
-        </div>
-    </div>
-    <!-- form -->
-    <div class="row mt-2">
-        <div class="col">
-            <form id="laptopCreate">
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Laptop Baru</h1>
+</div>
+
+<div class="row">
+    <div class="col-md-5">
+    <form id="laptopCreate">
                 <div class="form-group">
                     <label for="kode">Kode</label>
                     <input type="text" class="form-control" name="kode" id="kode" />
@@ -43,6 +39,5 @@
                     <button class="btn btn-primary btn-lg" type="submit">Submit</button>
                 </div>
             </form>
-        </div>
-    </div>  
-</main>
+    </div>
+</div>
