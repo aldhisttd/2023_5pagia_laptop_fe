@@ -20,12 +20,12 @@ $(document).ready(function () {
                         '<td>' + laptopList[i].nama + '</td>' +
                         '<td>' + laptopList[i].nama_kategori + '</td>' +
                         '<td>' + laptopList[i].nama_merek + '</td>' +
-                        '<td><img src="' + laptopList[i].gambar + '" width="100" /></td>' +
+                        '<td><img src="' + host + laptopList[i].gambar + '" width="100" /></td>' +
                         '<td>' + laptopList[i].harga + '</td>' +
                         '<td>' + laptopList[i].deskripsi + '</td>' +
                         '<td>' +
                         '<button class="btn btn-danger delete-btn" data-kode="' + laptopList[i].kode + '">Hapus</button>' +
-                        '<a class="btn btn-primary" href="index.php?page=laptop_edit&kode=' + laptopList[i].kode + '">Edit</a>' +
+                        '<a class="btn btn-primary" href="?page=laptop_edit&kode=' + laptopList[i].kode + '">Edit</a>' +
                         '</td>' +
                         '</tr>'
                     );
