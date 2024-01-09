@@ -3,7 +3,7 @@
 </div>
 
 <div class="row">
-    <div class="col">
+    <div class="col-md-5">
         <form id="merekUpdate">
             <div class="form-group">
                 <label for="kode">Kode</label>
