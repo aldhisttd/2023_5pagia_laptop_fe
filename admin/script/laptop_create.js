@@ -56,7 +56,7 @@ $('#laptopCreate').submit(function(e){
         dataType: 'json',
         success: (result) => {
             alert(result.msg);
-            location.href = host_fe + "?page=laptop_data";
+            location.href = host_fe + "admin/?page=laptop_data";
         },
     });
   })
