@@ -1,7 +1,6 @@
 $(document).ready(function () {
     readMerek();
 
-    // API read
     function readMerek() {
       $("#merekData").empty();
       $.ajax({
@@ -37,7 +36,6 @@ $(document).ready(function () {
       });
     }
 
-    // API hapus
     $(document).on("click", ".hapus", function () {
       var kode = $(this).val();
 

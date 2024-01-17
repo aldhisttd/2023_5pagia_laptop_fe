@@ -11,7 +11,7 @@ $("#MerekCreate").submit(function (e) {
       dataType: "json",
       success: (result) => {
         alert(result.msg);
-        location.href = host_fe + "/?page=merek_data";
+        location.href = host_fe + "admin/?page=merek_data";
       },
     });
   });
